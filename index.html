@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Who am I? - Case File</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Special+Elite&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div id="loading-screen" class="screen">
+        <div class="loader"></div>
+        <h2>LOADING CASE FILE...</h2>
+    </div>
+
+    <div id="login-screen" class="screen hidden">
+        <h1>CLASSIFIED</h1>
+        <p>AGENT IDENTIFICATION REQUIRED</p>
+        <button id="login-button">
+            <i class="fa-solid fa-user-secret"></i> SIGN IN
+        </button>
+    </div>
+
+    <div id="main-menu" class="screen hidden">
+        <h2>CASE DASHBOARD</h2>
+        <p>Welcome, Agent <span id="user-name"></span></p>
+        <button id="create-new-game-btn" class="menu-button"><i class="fa-solid fa-folder-plus"></i> NEW CASE FILE</button>
+        <button id="play-created-games-btn" class="menu-button"><i class="fa-solid fa-folder-open"></i> OPEN CASE FILES</button>
+        <button id="logout-btn" class="logout-btn"><i class="fa-solid fa-sign-out-alt"></i> LOG OUT</button>
+    </div>
+
+    <div id="create-game-screen" class="screen hidden">
+        <h2>CREATE NEW CASE FILE</h2>
+        <input type="text" id="game-name-input" placeholder="Enter Case File Name...">
+        <p>Select at least 2 clues:</p>
+        <div id="vocabulary-list-container"></div>
+        <button id="submit-create-game-btn">CREATE FILE</button>
+        <button id="back-to-main-menu-btn" class="secondary-btn">CANCEL</button>
+    </div>
+
+    <div id="confirmation-screen" class="screen hidden">
+        <h2>CONFIRM CASE DETAILS</h2>
+        <h3 id="confirm-game-name"></h3>
+        <p>Selected Clues:</p>
+        <div id="confirm-vocabulary-list"></div>
+        <p>Proceed with this investigation?</p>
+        <button id="confirm-yes-btn">YES, PROCEED</button>
+        <button id="confirm-no-btn" class="secondary-btn">NO, REVISE</button>
+    </div>
+
+    <div id="saved-games-screen" class="screen hidden">
+        <h2>OPEN CASE FILES</h2>
+        <div id="saved-games-list"></div>
+        <button id="back-to-menu-from-list-btn" class="secondary-btn">BACK TO DASHBOARD</button>
+    </div>
+    
+    <div id="round-1-screen" class="screen hidden"></div>
+    
+    <div id="round-2-intro-screen" class="screen hidden">
+        <h2>MISSION BRIEFING: STAGE 2</h2>
+        <p>"Analyze the field report, identify the evidence."</p>
+        <button id="start-round-2-btn">BEGIN ANALYSIS</button>
+    </div>
+    
+    <div id="round-2-screen" class="screen hidden"></div>
+    
+    <div id="final-summary-screen" class="screen hidden"></div>
+
+    <audio id="audio-correct" src="correct.mp3"></audio>
+    <audio id="audio-wrong" src="wrong.mp3"></audio>
+
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.6.7/firebase-auth-compat.js"></script>
+    <script type="module" src="script.js"></script>
+
+</body>
+</html>
