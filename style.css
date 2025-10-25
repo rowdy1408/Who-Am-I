@@ -116,6 +116,23 @@ input[type="text"]:focus {
     border-bottom-color: var(--text-color);
 }
 
+/* Style cho thanh tìm kiếm từ vựng */
+#search-vocab-input {
+    background-color: #f8f9fa; /* Màu nền sáng hơn một chút */
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-family: Arial, sans-serif; /* Dùng font dễ đọc hơn cho việc nhập liệu */
+    font-size: 0.9em;
+    text-align: left;
+    padding: 10px;
+    margin: 0 0 10px 0; /* Canh lề */
+    width: calc(100% - 22px); /* Cho bằng với input ở trên */
+}
+#search-vocab-input:focus {
+    border-bottom-color: var(--text-color); /* Giữ lại hiệu ứng focus */
+    background-color: #fff;
+}
+
 /* --- Loading Screen Styles --- */
 
 #loading-screen {
