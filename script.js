@@ -94,10 +94,12 @@ createNewGameBtn.addEventListener('click', () => {
     if (vocabularyList.length === 0) return alert("Dữ liệu vụ án đang được tải, vui lòng thử lại sau.");
     const screen = document.getElementById('create-game-screen');
     screen.querySelector('#game-name-input').value = '';
+    screen.querySelector('#search-vocab-input').value = ''; // Xóa nội dung tìm kiếm cũ
     const container = screen.querySelector('#vocabulary-list-container');
     container.innerHTML = vocabularyList.map(vocab => `<div class="vocab-item"><input type="checkbox" id="vocab-${vocab.id}" value="${vocab.id}"><label for="vocab-${vocab.id}">${vocab.word}</label></div>`).join('');
     screen.querySelector('#submit-create-game-btn').onclick = handleSubmitCreateGame;
     screen.querySelector('#back-to-main-menu-btn').onclick = () => showScreen('main-menu');
+    screen.querySelector('#search-vocab-input').onkeyup = filterVocabularyList;
     showScreen('create-game-screen');
 });
 
@@ -299,3 +301,26 @@ function showFinalSummary() {
 
 // Bắt đầu ứng dụng
 showScreen('loading-screen');
+
+// --- HÀM LỌC DANH SÁCH TỪ VỰNG TẠO GAME ---
+function filterVocabularyList() {
+    // 1. Lấy nội dung tìm kiếm và chuyển thành chữ thường
+    const filterText = document.getElementById('search-vocab-input').value.toLowerCase();
+    
+    // 2. Lấy tất cả các mục từ vựng
+    const items = document.querySelectorAll('#vocabulary-list-container .vocab-item');
+
+    // 3. Lặp qua từng mục
+    items.forEach(item => {
+        // Lấy nội dung chữ của nhãn (label)
+        const label = item.querySelector('label');
+        const itemText = label.textContent.toLowerCase();
+        
+        // 4. So sánh và ẩn/hiện
+        if (itemText.includes(filterText)) {
+            item.style.display = 'block'; // Hiện nếu khớp
+        } else {
+            item.style.display = 'none'; // Ẩn nếu không khớp
+        }
+    });
+}
